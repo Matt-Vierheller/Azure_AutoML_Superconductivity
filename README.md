@@ -1,23 +1,56 @@
-# Azure_AutoML_Superconductivity
-Azure AutoML regression experiment on UCI Superconductivity dataset to predict material conductivity.
+# Azure AutoML: Predicting Superconductor Critical Temperature
 
-# Azure AutoML for Superconductivity Prediction
+## Project Overview
+Hands-on Azure Machine Learning AutoML regression experiment using the UCI Superconductivity dataset. Goal: Predict the critical temperature (in Kelvin) at which a material becomes superconducting, based on 81 composition-derived features.
 
-## Overview
-This project demonstrates hands-on experience with Azure Machine Learning's Automated ML (AutoML) for regression tasks. Using the UCI Superconductivity dataset, I configured and ran an AutoML experiment to predict material conductivity based on composition and properties. The goal was to estimate superconductivity critical temperature.
+- **Dataset**: [UCI Superconductivity Data](https://archive.ics.uci.edu/dataset/464/superconductivty+data)  
+  - 21,263 samples  
+  - 81 features (e.g., statistical aggregates of atomic mass, valence, thermal conductivity, etc.) + target `critical_temp`  
+  - Open-source, no missing values in original data  
+  - Sample preview in `/data/sample_superconductivity.csv`
 
-- **Dataset**: [UCI Superconductivity Data Set](https://archive.ics.uci.edu/dataset/464/superconductivty+data) (open-source, 21,263 samples, 81 features).
-- **Azure Services Used**: Azure ML Workspace, AutoML for regression, compute cluster.
-- **Key Steps**:
-  1. Uploaded and verified dataset columns in Azure ML.
-  2. Configured AutoML: Regression task, target = critical temperature (conductivity proxy), imputed missing values with defaults, no high cardinality issues.
-  3. Ran experiment for 6 hours 15 minutes on standard compute.
-- **Results**: Best model was a VotingEnsemble with Root Mean Squared Error (RMSE) of 0.033. Full metrics and child runs reviewed in Azure portal.
+- **Azure Tools Used**: Azure ML Studio (UI-driven), AutoML for regression, compute resources.
 
-This showcases Azure ML's ability to automate model selection and hyperparameter tuning for materials science applications.
+- **Process**:
+  1. Uploaded dataset and verified columns/data sample.
+  2. Configured AutoML job: Regression task, target = `critical_temp`.
+  3. Enabled default featurization (imputed any missing if needed—none detected; no high cardinality features).
+  4. Ran experiment (~6 hours 15 minutes total runtime).
 
-## Setup and Replication
-To replicate (in your own Azure subscription):
-1. Create an Azure ML workspace.
-2. Upload the dataset (see /data/sample_superconductivity.csv for preview).
-3. Use Azure ML Studio to create an AutoML job with similar config.
+- **Key Result**: Best model = **VotingEnsemble** with **RMSE = 0.033** (excellent fit for this physics dataset—ensembles often excel on complex material properties).
+
+## Visual Proof from Azure ML Studio
+
+**Data Sample & Column Verification**  
+![Data Sample](images/data_sample.png)
+
+**AutoML Configuration Settings**  
+![Configuration](images/configuration_settings.png)
+
+**Experiment Runtime & Overview**  
+![Time and Date / Run Details](images/time_and_date.png)
+
+**Ranked Models**  
+![Models List](images/models.png)
+
+**Best Model Score & Details (VotingEnsemble)**  
+![Score and Model](images/score_and_model.png)
+
+**Run Metrics for Best Model**  
+![Metrics](images/run_metrics.png)
+
+## Results Summary
+- **Primary Metric Achieved**: Root Mean Squared Error = 0.033  
+- **Model Type**: VotingEnsemble (combines multiple algorithms for robustness)  
+- **Insights**: AutoML automatically tested dozens of models/params; ensemble won, showing value of automated exploration in materials prediction.
+
+## Learnings & Why This Matters
+- Navigated Azure ML Studio end-to-end without code.
+- Managed long-running jobs (monitored progress/costs via free credits).
+- Interpreted scientific ML results (low RMSE indicates reliable predictions for superconductivity research/applications).
+
+To replicate: Sign into Azure ML Studio, create a workspace, upload the UCI dataset, and configure a similar AutoML regression job.
+
+Questions? Feel free to open an issue or connect on LinkedIn/X (@Mvierhe1).
+
+MIT License – feel free to reference!
