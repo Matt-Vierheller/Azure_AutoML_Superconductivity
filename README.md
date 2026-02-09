@@ -22,22 +22,22 @@ Hands-on Azure Machine Learning AutoML regression experiment using the UCI Super
 ## Visual Proof from Azure ML Studio
 
 **Data Sample & Column Verification**  
-![Data Sample](images/data_sample.png)
+![Data Sample](data_sample.png)
 
 **AutoML Configuration Settings**  
-![Configuration](images/configuration_settings.png)
+![Configuration](configuration_settings.png)
 
 **Experiment Runtime & Overview**  
-![Time and Date / Run Details](images/time_and_date.png)
+![Time and Date / Run Details](time_and_date.png)
 
 **Ranked Models**  
-![Models List](images/models.png)
+![Models List](models.png)
 
 **Best Model Score & Details (VotingEnsemble)**  
-![Score and Model](images/score_and_model.png)
+![Score and Model](score_and_model.png)
 
 **Run Metrics for Best Model**  
-![Metrics](images/run_metrics.png)
+![Metrics](run_metrics.png)
 
 ## Results Summary
 - **Primary Metric Achieved**: Root Mean Squared Error = 0.033  
